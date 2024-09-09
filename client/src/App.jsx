@@ -17,10 +17,10 @@ import CheckAuth from "./components/common/check-auth";
 import UnauthPage from "./pages/unauth-page";
 
 function App() {
-  const isAuthenticated = true;
+  const isAuthenticated = false;
   const user = {
-    name : 'bibek',
-    role : "user"
+    name : "",
+    role : ""
   };
   return (
     <div>
