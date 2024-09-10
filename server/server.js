@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT | 3001;
+const authRouter = require("./routes/auth/auth-route")
 
 mongoose
   .connect(
@@ -28,6 +29,9 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
+
+// route
+app.use('/api/auth', authRouter)
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);
