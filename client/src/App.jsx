@@ -15,13 +15,12 @@ import ShopHome from "./pages/shopping-view/home";
 import ShopListing from "./pages/shopping-view/listing";
 import CheckAuth from "./components/common/check-auth";
 import UnauthPage from "./pages/unauth-page";
+import { useSelector } from "react-redux";
 
 function App() {
-  const isAuthenticated = false;
-  const user = {
-    name : "",
-    role : ""
-  };
+
+  const {user, isAuthenticated} = useSelector(state => state.auth)
+
   return (
     <div>
       <Routes>
