@@ -2,6 +2,12 @@ import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
 
 const CheckAuth = ({ isAuthenticated, user, children }) => {
+  
+  /**
+   * useLocation() -> this will give the current location
+   *  Ex: localhost:5173/admin/orders 
+   *  useLocation will give /admin/orders
+   */
   const location = useLocation();
 
   console.log(location.pathname, isAuthenticated);

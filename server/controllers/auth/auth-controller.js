@@ -27,7 +27,8 @@ const registerUser = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: "New user created!",
+      message: "New user created! 😄",
+      data: newUser
     });
   } catch (error) {
     console.error(error);
@@ -38,6 +39,7 @@ const registerUser = async (req, res) => {
   }
 };
 
+// Login user
 const loginUser = async (req, res) => {
   const {email, password} = req.body;
   try {
@@ -52,7 +54,7 @@ const loginUser = async (req, res) => {
     if(!checkPasswordMatch){
       return res.json({
         success: false,
-        message: "Wrong Password!"
+        message: "Wrong Password! 😞"
       })
     }
     const token = jwt.sign({
@@ -79,7 +81,7 @@ const loginUser = async (req, res) => {
     console.log(error);
     res.status(500).json({
       success: false,
-      message: "Error while loggin user..."
+      message: "Error while logging user..."
     })
     
   }
