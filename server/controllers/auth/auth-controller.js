@@ -94,4 +94,30 @@ const logoutUser = (req, res) => {
   })
 }
 
-module.exports = { registerUser, loginUser, logoutUser };
+const authMiddleware = (req, res, next) => {
+  const token = req.cookies.token
+  if(!token) {
+    res.status(401).json({
+      success: false,
+      message: "Unauthorized user"
+    })
+  }
+
+  try {
+    const decoded = jwt.verify(token, "SUPER_SECRET");
+    req.user = decoded
+    next();
+  } catch (error) {
+    res.status(401).json({
+        success: false,
+        message: "Unauthorized user",
+    });
+  }
+}
+
+module.exports = { 
+  registerUser, 
+  loginUser, 
+  logoutUser, 
+  authMiddleware 
+};

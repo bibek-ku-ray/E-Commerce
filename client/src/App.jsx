@@ -15,11 +15,25 @@ import ShopHome from "./pages/shopping-view/home";
 import ShopListing from "./pages/shopping-view/listing";
 import CheckAuth from "./components/common/check-auth";
 import UnauthPage from "./pages/unauth-page";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { checkAuth } from "./store/auth-slice";
+import { Skeleton } from "@/components/ui/skeleton";
+
 
 function App() {
 
-  const {user, isAuthenticated} = useSelector(state => state.auth)
+  const { user, isAuthenticated, isLoading } = useSelector(
+      (state) => state.auth
+  );
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(checkAuth())
+  },[dispatch])
+
+  if(isLoading) return <Skeleton className="w-[600px] h-[600px] bg-black" />;
+
 
   return (
     <div>

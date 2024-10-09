@@ -34,12 +34,12 @@ const AuthLogin = () => {
   }
 
   return (
-    <div className="mx-auto w-full max-w-md space-y-6">
+    <div className="w-full max-w-md mx-auto space-y-6">
       <div className="text-center">
         <h1 className="text-3xl font-bold tracking-tight text-foreground">Sign In</h1>
         <p className="mt-2">
-          Don't have an accont
-          <Link to="/auth/register" className="font-medium ml-2 text-primary hover:underline">
+          Don't have an account
+          <Link to="/auth/register" className="ml-2 font-medium text-primary hover:underline">
             Register
           </Link>
         </p>
